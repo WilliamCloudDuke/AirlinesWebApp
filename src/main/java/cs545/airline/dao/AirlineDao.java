@@ -38,6 +38,7 @@ public class AirlineDao {
 		}
 	}
 
+
 	public Airline findOne(long id) {
 		return entityManager.find(Airline.class, id);
 	}

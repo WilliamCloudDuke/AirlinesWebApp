@@ -83,4 +83,9 @@ public class FlightService {
 		return flightDao.findAll();
 	}
 
+	public Flight findById(long id) {
+		return flightDao.findOne(id);
+	}
+	
+
 }

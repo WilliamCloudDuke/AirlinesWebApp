@@ -21,7 +21,7 @@ public class AirlineService {
 
 	@Inject
 	private AirlineDao airlineDao;
-	
+
 	public void create(Airline airline) {
 		airlineDao.create(airline);
 	}
@@ -49,4 +49,14 @@ public class AirlineService {
 	public List<Airline> findAll() {
 		return airlineDao.findAll();
 	}
+
+	public Airline findById(long id) {
+		return airlineDao.findOne(id);
+	}
+
+	public void delete(long id) {
+		Airline airline = this.findById(id);
+		this.delete(airline);
+	}
+
 }

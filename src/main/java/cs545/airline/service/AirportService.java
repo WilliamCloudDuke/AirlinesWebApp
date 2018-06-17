@@ -16,11 +16,11 @@ import cs545.airline.model.Flight;
 @Transactional
 public class AirportService {
 
-	// These services should be evaluated to reconsider which methods should be public 
+	// These services should be evaluated to reconsider which methods should be
+	// public
 
 	@Inject
 	private AirportDao airportDao;
-		
 
 	public void create(Airport airport) {
 		airportDao.create(airport);
@@ -33,7 +33,7 @@ public class AirportService {
 	public Airport update(Airport airport) {
 		return airportDao.update(airport);
 	}
-		
+
 	public Airport find(Airport airport) {
 		return airportDao.findOne(airport.getId());
 	}
@@ -65,4 +65,14 @@ public class AirportService {
 	public List<Airport> findAll() {
 		return airportDao.findAll();
 	}
+
+	public Airport findById(long id) {
+		return airportDao.findOne(id);
+	}
+
+	public void delete(long id) {
+		Airport airport = findById(id);
+		airportDao.delete(airport);
+	}
+
 }
