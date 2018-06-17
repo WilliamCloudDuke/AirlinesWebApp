@@ -9,7 +9,7 @@
         <class>cs545.airline.model.Airplane</class>
         <class>cs545.airline.model.Airport</class>
         <class>cs545.airline.model.Flight</class>
-        <class>cs545.airline.model.Test</class>
+        <!--class>cs545.airline.model.Test</class-->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
             <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
