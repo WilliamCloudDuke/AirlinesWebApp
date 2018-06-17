@@ -1,10 +1,12 @@
 cs545\airline\model\Airplane.class
+cs545\airline\rest\FlightRestService.class
 edu\mum\cs545\test\TestFlightService.class
 cs545\airline\service\FlightService.class
 edu\mum\cs545\test\TestAirlineService.class
 edu\mum\gf\workaround\CDIBeanManager.class
 edu\mum\gf\workaround\JpaUtil.class
 cs545\airline\model\Flight.class
+cs545\airline\rest\AirplaneRestService.class
 edu\mum\cs545\test\TestAirportService.class
 edu\mum\cs545\ws\HelloRest.class
 edu\mum\gf\workaround\ResouceReleaseListener.class
@@ -19,5 +21,6 @@ cs545\airline\dao\AirlineDao.class
 edu\mum\cs545\test\TestAirplaneService.class
 cs545\airline\service\AirportService.class
 cs545\airline\service\AirplaneService.class
+cs545\airline\rest\AirportRestService.class
 cs545\airline\configuration\RestConfig.class
 cs545\airline\rest\AirlineRestService.class
