@@ -20,3 +20,4 @@ edu\mum\cs545\test\TestAirplaneService.class
 cs545\airline\service\AirportService.class
 cs545\airline\service\AirplaneService.class
 cs545\airline\configuration\RestConfig.class
+cs545\airline\rest\AirlineRestService.class
