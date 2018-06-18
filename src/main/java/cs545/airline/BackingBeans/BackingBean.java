@@ -3,51 +3,34 @@ package cs545.airline.BackingBeans;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import cs545.airline.model.Airline;
 import cs545.airline.service.AirlineService;
 
 @Named("backingBean")
-@RequestScoped
+@SessionScoped
 public class BackingBean implements Serializable {
 
-	/*
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private AirlineService airlineService;
-	List<Airline> airlines;
-	Airline airline;
-
-	public AirlineService getAirlineService() {
-		return airlineService;
+	@Inject
+	AirlineService airlineService;
+	
+	public List<Airline> getList(){
+		System.out.println("tEST DATA AND REACHED");
+		List<Airline> airlines= airlineService.findAll();
+		return airlines;
 	}
-
-	public Airline getAirline() {
-		return airline;
+	
+	public List<Airline> getAirlines() {
+		System.out.println(">>>>>>>>>>>>>>>> Testing ");
+		List<Airline> airlines=airlineService.findAll();
+		System.out.println(">>>>>>>>>>>>>>>> Testing "+airlines.size());
+		return airlines;
 	}
 
 	
-
-	public BackingBean(AirlineService airlineService, List<Airline> airlines, Airline airline) {
-		super();
-
-		this.airlines = airlineService.findAll();
-		this.airline = new Airline();
-
-	}
-
-	public List<Airline> getAirlines() {
-		return airlines;
-
-	}
-
-	public String createAirline() {
-		this.airlines.add(airline);
-		return "ListAirLines";
-
-	}
 
 }

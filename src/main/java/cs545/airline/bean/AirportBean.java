@@ -1,4 +1,4 @@
-package cs545.airline.bean;
+/*package cs545.airline.bean;
 
 import java.util.List;
 import java.util.Map;
@@ -49,4 +49,4 @@ public class AirportBean {
 		airportService.update(airport);
 		return "airportList.xhtml";
 	}
-}
+} */

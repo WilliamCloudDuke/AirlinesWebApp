@@ -1,5 +1,6 @@
 package cs545.airline.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import cs545.airline.model.Airline;
+import cs545.airline.model.Flight;
 import edu.mum.gf.workaround.JpaUtil;
 
 @Named
@@ -60,7 +62,37 @@ public class AirlineDao {
 	}
 
 	public List<Airline> findAll() {
+		
 		return entityManager.createQuery("select a from Airline a", Airline.class).getResultList();
+		
+		/*List<Airline> airlineList= new ArrayList<>();
+		
+		List<Flight> flightList= new ArrayList<>();
+		
+		Airline ethiopia= new Airline("Ethiopian Airlines");
+		Airline nepalise= new Airline("Nepalese");
+		Flight firstflight = new Flight("ET456", "02/12","5:15", "15/18", "14:12");
+		Flight secondflight = new Flight("ET445", "13/12","15:15", "05/18", "4:12");
+		
+		ethiopia.addFlight(firstflight);
+		nepalise.addFlight(secondflight);
+		
+		flightList.add(firstflight);
+		flightList.add(secondflight);
+		
+		airlineList.add(ethiopia);
+		airlineList.add(nepalise);
+		return airlineList;
+		
+		
+		*/
+		
+		
+		
+		
+		
+		
+	
 	}
 
 }
