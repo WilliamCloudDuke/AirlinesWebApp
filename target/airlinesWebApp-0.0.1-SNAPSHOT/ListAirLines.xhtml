@@ -1,0 +1,66 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+</h:head>
+
+<h:body>
+	<div class="container">
+	
+
+		<f:view>
+			<h:dataTable value="#{backingBean.airlines}" var="airline"
+				styleClass="table" headerClass="accountTableHeader"
+				rowClasses="accountTableOddRow,accountTableEvenRow">
+
+				<h:column>
+					<f:facet name="header">Name</f:facet>    				
+      #{airline.name}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Flight Number</f:facet>
+      #{airline.flight.flightnr}
+   </h:column>
+
+			
+							<h:column>
+					<f:facet name="header">Departure Date</f:facet>    				
+     #{airline.flight.departureTime}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Arrivale Time</f:facet>
+      #{airline.flight.arrivalTime}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:column>
+						<h:form>	
+							<h:commandLink value="Details" 
+								action="#"></h:commandLink>
+						</h:form>
+
+					</h:column>
+
+				</h:column>
+
+			</h:dataTable>
+
+			<h:link value="Home" outcome="home" class="btn btn-primary" />
+
+		</f:view>
+	</div>
+
+
+</h:body>
+</html>

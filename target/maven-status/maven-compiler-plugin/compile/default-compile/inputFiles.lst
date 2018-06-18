@@ -7,6 +7,7 @@ D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\edu\mum\cs545\test\TestAir
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\edu\mum\gf\workaround\CDIBeanManager.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\model\Flight.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\edu\mum\cs545\ws\HelloRest.java
+D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\BackingBeans\BackingBean.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\rest\AirplaneRestService.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\service\AirlineService.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\service\AirplaneService.java
@@ -14,6 +15,7 @@ D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\edu\mum\gf\workaround\JpaU
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\rest\FlightRestService.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\dao\AirplaneDao.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\configuration\ClassBinder.java
+D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\bean\AirportBean.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\rest\AirportRestService.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\edu\mum\cs545\test\TestFlightService.java
 D:\William\MUM\WAA\Final\airlinesWebApp\src\main\java\cs545\airline\model\Airport.java

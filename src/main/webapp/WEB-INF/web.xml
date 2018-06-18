@@ -38,6 +38,10 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
+<<<<<<< HEAD
 		<welcome-file>index.html</welcome-file>
+=======
+		<welcome-file>airportList.xhtml</welcome-file>
+>>>>>>> 9c35057746d8ee8d3285c44415400e6b750ecc36
 	</welcome-file-list>
 </web-app>
