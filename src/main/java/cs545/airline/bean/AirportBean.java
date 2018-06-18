@@ -12,7 +12,7 @@ import javax.inject.Named;
 import cs545.airline.model.Airport;
 import cs545.airline.service.AirportService;
 
-@Named("airportBean")
+@Named
 @RequestScoped
 public class AirportBean {
 	@Inject
@@ -31,7 +31,8 @@ public class AirportBean {
 
 	public String createAirport() {
 		airportService.create(airport);
-		return "airportList.xhtml";
+		// return "airportList.xhtml";
+		return "airportList.xhtml?faces-redirect=true";
 	}
 
 	public List<Airport> getAirports() {
@@ -41,12 +42,13 @@ public class AirportBean {
 	public String editAiportRecord(long id) {
 		Airport a = airportService.findById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		System.out.println("sessionMap " + sessionMap);
 		sessionMap.put("editAirport", a);
-		return "editAirport.xhtml";
+		return "editAirport.xhtml?faces-redirect=true";
 	}
 
 	public String updateAirport(Airport airport) {
 		airportService.update(airport);
-		return "airportList.xhtml";
+		return "airportList.xhtml?faces-redirect=true";
 	}
 } */
