@@ -15,12 +15,14 @@ cs545\airline\model\Airport.class
 cs545\airline\dao\FlightDao.class
 cs545\airline\dao\AirplaneDao.class
 cs545\airline\service\AirlineService.class
+cs545\airline\BackingBeans\BackingBean.class
 cs545\airline\dao\AirportDao.class
 cs545\airline\configuration\ClassBinder.class
 cs545\airline\dao\AirlineDao.class
 edu\mum\cs545\test\TestAirplaneService.class
 cs545\airline\service\AirportService.class
 cs545\airline\service\AirplaneService.class
+cs545\airline\bean\AirportBean.class
 cs545\airline\rest\AirportRestService.class
 cs545\airline\configuration\RestConfig.class
 cs545\airline\rest\AirlineRestService.class
