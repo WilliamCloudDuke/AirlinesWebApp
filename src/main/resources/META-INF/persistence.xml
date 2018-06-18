@@ -16,8 +16,8 @@
 
 
 		<properties>
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:derby://localhost:1527/waatest;create=true" />
+			<!-- <property name="javax.persistence.jdbc.url"
+				value="jdbc:derby://localhost:1527/waatest;create=true" /> -->
 
 			<property name="eclipselink.target-database"
 				value="org.eclipse.persistence.platform.database.DerbyPlatform" />
@@ -51,7 +51,7 @@
  			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
             <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
-            <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/import.sql"/>
+            
             <property name="eclipselink.logging.level" value="ALL"/> 
 		</properties>
 

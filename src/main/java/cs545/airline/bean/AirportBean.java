@@ -12,7 +12,7 @@ import javax.inject.Named;
 import cs545.airline.model.Airport;
 import cs545.airline.service.AirportService;
 
-@Named("airportBean")
+@Named
 @RequestScoped
 public class AirportBean {
 	@Inject
