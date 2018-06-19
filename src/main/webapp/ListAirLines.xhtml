@@ -34,6 +34,21 @@
 
 
 
+
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:column>
+						<h:form>
+							<h:commandLink value="Details" action="#"></h:commandLink>
+							<h:commandLink value="Update" action="#{backingBean.editAirLine(air.id)}"></h:commandLink>
+							<h:commandLink value="Delete" action="#"></h:commandLink>
+
+						</h:form>
+
+					</h:column>
+
+				</h:column>
+
 			</h:dataTable>
 		</f:view>
 
