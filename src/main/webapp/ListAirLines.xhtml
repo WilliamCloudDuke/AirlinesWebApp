@@ -2,21 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
-	<ui:debug />
+		href="https://use.fontaweacsome.com/releases/v5.0.13/css/all.css" />
+	<!--  ui:debug /-->
 	<title>Airlines</title>
 </h:head>
 <h:body>
 	<div class="container">
-		<h1>Airlines</h1>
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a class="navbar-brand">Airlines</a>
+		<form class="form-inline">
+			<input class="form-control mr-sm-2" type="search"
+				placeholder="Search" aria-label="Search" />
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		</nav>
+	
+	
+	
+	
+	
 
 		<f:view>
 			<h:dataTable value="#{backingBean.getAirlines()}" var="air"
@@ -39,9 +53,12 @@
 					<f:facet name="header">Action</f:facet>
 					<h:column>
 						<h:form>
+
+							<h:commandLink value="Update"
+								action="#{backingBean.editAirLine(air.id)}"></h:commandLink>
+							<h:commandLink value="Delete"
+								action="#{backingBean.deleteAirline(air.id)}"></h:commandLink>
 							<h:commandLink value="Details" action="#"></h:commandLink>
-							<h:commandLink value="Update" action="#{backingBean.editAirLine(air.id)}"></h:commandLink>
-							<h:commandLink value="Delete" action="#{backingBean.deleteAirline(air.id)}"></h:commandLink>
 
 						</h:form>
 
@@ -52,6 +69,17 @@
 			</h:dataTable>
 		</f:view>
 
+<h:form>
+
+ 
+Name<h:inputText value="#{backingBean.airline.name}" />
+		<br></br>
+		<h:commandButton value="Create" outcome="#"
+			action="#{backingBean.createAirline()}"></h:commandButton>
+
+	</h:form>
 	</div>
+
+	
 </h:body>
 </html>
