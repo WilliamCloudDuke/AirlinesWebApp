@@ -59,7 +59,13 @@ public class BackingBean implements Serializable {
 	
 	public String updateAirline(Airline airline) {
 		
-		airlineService.update(airline);
+		airlineService.create(airline);;
+		return "ListAirLines.xhtml?faces-redirect=true";
+		
+	}
+	
+	public String deleteAirline(long id) {
+		airlineService.delete(id);
 		return "ListAirLines.xhtml?faces-redirect=true";
 		
 	}
