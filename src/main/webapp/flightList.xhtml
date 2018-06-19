@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-	
-	<html xmlns="http://www.w3.org/1999/xhtml"
+
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
@@ -18,7 +18,7 @@
 </h:head>
 <h:body>
 	<div class="container">
-	<nav class="navbar navbar-light bg-light justify-content-between">
+		<nav class="navbar navbar-light bg-light justify-content-between">
 		<a class="navbar-brand">Flights</a>
 		<form class="form-inline">
 			<input class="form-control mr-sm-2" type="search"
@@ -29,19 +29,45 @@
 
 
 		<f:view>
-		
-		<h:form>
-		<h:outputLabel for="flightMenu" value ="AirLine Name"></h:outputLabel>
-		<h:selectOneMenu id ="flightMenu" value="#{backingBean.selectedAirlineName}"  lazy="true">
-			<f:ajax listener="#{backingBean.setSelectedAirline()}" render="flightTable"/>
-			<f:selectItem itemLabel="Select One" itemValue="airlineName"/>
-			<f:selectItems value="#{backingBean.getAirlineNames()}" ></f:selectItems>
-		</h:selectOneMenu>
-		
-		</h:form>
-		
-			<h:dataTable id="flightTable" value="#{backingBean.selectedAirLine.flights}"
-				var="flight" styleClass="table" headerClass="accountTableHeader"
+
+			<h:panelGrid columns="2">
+
+				<h:panelGroup>
+					<h:form>
+
+						<h:outputLabel for="flightMenu" value="AirLine Name"></h:outputLabel>
+						<h:selectOneMenu id="flightMenu"
+							value="#{backingBean.selectedAirlineName}" lazy="true">
+							<!-- change the page -->
+							<f:ajax listener="#{backingBean.setSelectedAirline()}"
+								render="flightTable" />
+
+
+							<f:selectItem itemLabel="Select One" itemValue="airlineName" />
+							<f:selectItems value="#{backingBean.getAirlineNames()}"></f:selectItems>
+						</h:selectOneMenu>
+
+					</h:form>
+				</h:panelGroup>
+
+				<h:panelGroup>
+					<h:form>
+						<h:outputLabel for="flightMenu" value="Departure Date"></h:outputLabel>
+						<h:selectOneMenu id="flightMenu"
+							value="#{backingBean.departureDate}" lazy="true">
+							<f:ajax listener="#{backingBean.#}" render="flightTable" />
+							<f:selectItem itemLabel="Select One" itemValue="departureDate" />
+							<f:selectItems value="#{backingBean.getDeprtureDate()}"></f:selectItems>
+						</h:selectOneMenu>
+
+					</h:form>
+				</h:panelGroup>
+			</h:panelGrid>
+
+
+			<h:dataTable id="flightTable"
+				value="#{backingBean.selectedAirLine.flights}" var="flight"
+				styleClass="table" headerClass="accountTableHeader"
 				rowClasses="accountTableOddRow,accountTableEvenRow">
 				<h:column>
 					<f:facet name="header">id</f:facet>    				
@@ -52,7 +78,7 @@
 					<f:facet name="header">Flight Number</f:facet>    				
       #{flight.flightnr}
    </h:column>
-   		<h:column>
+				<h:column>
 					<f:facet name="header">Departure Date</f:facet>    				
       #{flight.departureDate}
    </h:column>
@@ -61,7 +87,7 @@
 					<f:facet name="header">Departure Time</f:facet>    				
       #{flight.departureTime}
    </h:column>
-   		<h:column>
+				<h:column>
 					<f:facet name="header">Arrival Date</f:facet>    				
       #{flight.arrivalDate}
    </h:column>
@@ -70,17 +96,17 @@
 					<f:facet name="header">Arrival Time</f:facet>    				
       #{flight.arrivalTime}
    </h:column>
-   
-   	<h:column>
+
+				<h:column>
 					<f:facet name="header">Origin</f:facet>    				
       #{flight.origin.name}
    </h:column>
-   
-   	<h:column>
+
+				<h:column>
 					<f:facet name="header">Destination</f:facet>    				
       #{flight.destination.name}
    </h:column>
-   <h:column>
+				<h:column>
 					<f:facet name="header">AirPlane</f:facet>    				
       #{flight.airplane.serialnr}
    </h:column>
@@ -91,7 +117,7 @@
 				<h:column>
 					<f:facet name="header">Action</f:facet>
 					<h:column>
-						
+
 					</h:column>
 
 				</h:column>
@@ -99,10 +125,10 @@
 			</h:dataTable>
 		</f:view>
 
- 
+
 
 	</div>
 
-	
+
 </h:body>
 </html>

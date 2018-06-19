@@ -28,7 +28,10 @@ public class AirlineDao {
 	}
 
 	public Airline update(Airline airline) {
-		return entityManager.merge(airline);
+		entityManager.getTransaction().begin();
+		Airline a = entityManager.merge(airline);
+		entityManager.getTransaction().commit();
+		return a;
 	}
 
 	public void delete(Airline airline) {
