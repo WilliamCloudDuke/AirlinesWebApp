@@ -39,11 +39,11 @@ public class AirportBean {
 		return airports;
 	}
 
-	public String editAiportRecord(long id) {
-		Airport a = airportService.findById(id);
+	public String retrieveAiport(long id) {
+		Airport airport = airportService.findById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		System.out.println("sessionMap " + sessionMap);
-		sessionMap.put("editAirport", a);
+		sessionMap.put("editAirport", airport);
 		return "editAirport.xhtml?faces-redirect=true";
 	}
 

@@ -12,49 +12,59 @@
 </h:head>
 <f:view>
 	<ui:include src="menu.xhtml"/>
-    <h:form id="editAirportForm" class="form-horizontal">
+    <h:form id="editFlightForm" class="form-horizontal">
         <div class="form-group">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <h2>Edit Airport</h2>
+                <h2>Edit Flight</h2>
             </div>
         </div>
         <hr/>
         <div class="form-group">
-            <h:outputLabel for="airportcode" class="control-label col-sm-4">Airport code:</h:outputLabel>
+            <h:outputLabel for="flightnr" class="control-label col-sm-4">Flight Number:</h:outputLabel>
             <div class="col-sm-4">
-                <h:inputText id="airportcode" value="#{editAirport.airportcode}" class="form-control" validatorMessage="Airport code is required">
+                <h:inputText id="flightnr" value="#{editFlight.flightnr}" class="form-control" validatorMessage="Flight number is required">
                     <f:validateRequired />
                 </h:inputText>
             </div>
         </div>
         <div class="form-group">
-            <h:outputLabel for="name" class="control-label col-sm-4">Name:</h:outputLabel>
+            <h:outputLabel for="departureDate" class="control-label col-sm-4">Departure Date</h:outputLabel>
             <div class="col-sm-4">
-                <h:inputText id="name" value="#{editAirport.name}" class="form-control" validatorMessage="Name is required">
-                    <f:validateRequired/>
+                <h:inputText id="departureDate" value="#{editFlight.departureDate}" class="form-control">
                 </h:inputText>
             </div>
         </div>
         <div class="form-group">
-            <h:outputLabel for="city" class="control-label col-sm-4">City:</h:outputLabel>
+            <h:outputLabel for="departureTime" class="control-label col-sm-4">Departure Time</h:outputLabel>
             <div class="col-sm-4">
-                <h:inputText id="city" value="#{editAirport.city}" class="form-control">
+                <h:inputText id="departureTime" value="#{editFlight.departureTime}" class="form-control">
                 </h:inputText>
             </div>
         </div>
         <div class="form-group">
-            <h:outputLabel for="country" class="control-label col-sm-4">Country:</h:outputLabel>
+            <h:outputLabel for="arrivalTime" class="control-label col-sm-4">Arrival Time</h:outputLabel>
             <div class="col-sm-4">
-                <h:inputText id="country" value="#{editAirport.country}" class="form-control">
+                <h:inputText id="arrivalTime" value="#{editFlight.arrivalTime}" class="form-control">
                 </h:inputText>
             </div>
         </div>
+
+        <div class="form-group">
+            <h:outputLabel for="arrivalDate" class="control-label col-sm-4">Arrival Date</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="arrivalDate" value="#{editFlight.arrivalDate}" class="form-control">
+                </h:inputText>
+            </div>
+        </div>
+
+
+
         <div class="form-group">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
                 <div class="col-sm-2">
-                    <h:commandButton value="Save" action="#{airportBean.updateAirport(editAirport)}" class="btn btn-success btnWidth" />
+                    <h:commandButton value="Save" action="#{flightBean.updateFlight(editFlight)}" class="btn btn-success btnWidth" />
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@
 	<h:outputScript library="css" name="/bootstrap-4/js/bootstrap.min.js" />
 </h:head>
 <f:view>
+    <ui:include src="menu.xhtml"/>
 	<center>
 		<h2>
 			<h:outputText value="Airports" />
@@ -43,7 +44,7 @@
 			<h:column>
 				<f:facet name="header">Update</f:facet>
 				<h:commandButton
-					action="#{airportBean.editAiportRecord(airport.id)}" value="Update"
+					action="#{airportBean.retrieveAiport(airport.id)}" value="Update"
 					class="btn btn-primary" />
 			</h:column>
 		</h:dataTable>
