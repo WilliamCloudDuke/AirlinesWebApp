@@ -1,6 +1,7 @@
 package cs545.airline.BackingBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -14,23 +15,35 @@ import cs545.airline.service.AirlineService;
 @SessionScoped
 public class BackingBean implements Serializable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	@Inject
 	AirlineService airlineService;
-	
-	public List<Airline> getList(){
-		System.out.println("tEST DATA AND REACHED");
-		List<Airline> airlines= airlineService.findAll();
-		return airlines;
-	}
-	
-	public List<Airline> getAirlines() {
-		System.out.println(">>>>>>>>>>>>>>>> Testing ");
-		List<Airline> airlines=airlineService.findAll();
-		System.out.println(">>>>>>>>>>>>>>>> Testing "+airlines.size());
-		return airlines;
+	Airline airline = new Airline();
+	List<Airline> airlines = new ArrayList<>();
+
+	public String createAirline() {
+
+		airlineService.create(airline);
+		airline = new Airline();
+		return "ListAirLines.xhtml?faces-redirect=true";
+
 	}
 
-	
+	public AirlineService getAirlineService() {
+		return airlineService;
+	}
+
+	public Airline getAirline() {
+		return airline;
+	}
+
+	public List<Airline> getAirlines() {
+		airlines = airlineService.findAll();
+		return airlines;
+	}
 
 }

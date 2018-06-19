@@ -5,21 +5,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-<ui:debug />
-	<title>Airline</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+	<ui:debug />
+	<title>Airlines</title>
 </h:head>
 <h:body>
-	<f:view>
-		<h:dataTable value="#{backingBean.getList()}" var="air">
-			<h:column>
-				<f:facet name="header">Name</f:facet>    				
+	<div class="container">
+		<h1>Airlines</h1>
+
+		<f:view>
+			<h:dataTable value="#{backingBean.getAirlines()}" var="air"
+				styleClass="table" headerClass="accountTableHeader"
+				rowClasses="accountTableOddRow,accountTableEvenRow">
+				<h:column>
+					<f:facet name="header">id</f:facet>    				
+      #{air.id}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Name</f:facet>    				
       #{air.name}
    </h:column>
-   
-  
-		</h:dataTable>
-	</f:view>
+
+
+
+			</h:dataTable>
+		</f:view>
+
+	</div>
 </h:body>
 </html>

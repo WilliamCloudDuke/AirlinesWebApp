@@ -12,4 +12,18 @@
 			</network-handler>
 		</connection>
 	</data-source>
+	<data-source id="derby_server-1641514e9e3-328a848f15efb1fe" provider="generic" driver="derby_server" name="Derby - localhost" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="1527" server="" database="Sun-AppServ-Samples" url="jdbc:derby://localhost:1527/Sun-AppServ-Samples;create=false" user="APP" type="dev">
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="port" value="22"/>
+				<property name="implementation" value="jsch"/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+		</connection>
+	</data-source>
+	<filters/>
 </data-sources>
