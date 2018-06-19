@@ -13,7 +13,9 @@ import javax.inject.Named;
 
 import cs545.airline.model.Airline;
 import cs545.airline.model.Airport;
+import cs545.airline.model.Flight;
 import cs545.airline.service.AirlineService;
+import cs545.airline.service.AirportService;
 import cs545.airline.service.FlightService;
 
 @Named("backingBean")
@@ -27,44 +29,42 @@ public class BackingBean implements Serializable {
 
 	@Inject
 	private AirlineService airlineService;
-	private Airline airline = new Airline();
-	private List<Airline> airlines = new ArrayList<>();
-	private Airline selectedAirLine = null; // to get list of flights
-	private String departureDate;
-	
-
-	
-	public String getDepartureDate() {
-		return departureDate;
-	}
-
-	public void setDepartureDate(String departureDate) {
-		this.departureDate = departureDate;
-	}
-
-	private String selectedAirlineName;
-	
+	@Inject
+	private AirportService airportService;
 	@Inject
 	private FlightService flightService;
+	private Airline airline = new Airline();
+	private List<Airline> airlines = new ArrayList<>();
+	private List<Flight>flights=new ArrayList<>();
+	private Airline selectedAirLine = null; // to get list of flights
+	private String selectedAirlineName;
+	private String selectedAirportCode;
+	
+	
 
-	public FlightService getFlightService() {
-		return flightService;
+	public String getSelectedAirportCode() {
+		return selectedAirportCode;
 	}
 
-	public void setFlightService(FlightService flightService) {
-		this.flightService = flightService;
+	public void setSelectedAirportCode(String selectedAirportCode) {
+		this.selectedAirportCode = selectedAirportCode;
+	}
+	
+	//public List<Flight>get
+
+	public void setAirlineService(AirlineService airlineService) {
+		this.airlineService = airlineService;
 	}
 
 	public String getSelectedAirlineName() {
 		return selectedAirlineName;
 	}
 
-	//get seting the value to pass it to ajax
+	//get it in the combobox
 	public void setSelectedAirlineName(String selectedAirlineName) {
 		this.selectedAirlineName = selectedAirlineName;
 	}
 
-	  
 	public Airline getSelectedAirLine() {
 		return selectedAirLine;
 	}
@@ -99,6 +99,10 @@ public class BackingBean implements Serializable {
 		return airlineService.findAll().stream().map(a -> a.getName()).collect(Collectors.toList());
 	}
 	
+	public List<String> getAirPorts() {
+		return airportService.findAll().stream().map(a ->a.getAirportcode()).collect(Collectors.toList());
+	}
+	
 	public String editAirLine(long id) {
 		Airline air = airlineService.findById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -123,22 +127,26 @@ public class BackingBean implements Serializable {
 	
 	public String airlineDetails(String name) {
 		selectedAirLine = airlineService.findByName(name);
+		flights=selectedAirLine.getFlights();
 		return "flightList.xhtml?faces-redirect=true";
 	}
 	
+	public List<Flight> getFlights() {
+		return flights;
+	}
+
 	// Ajax for select airline name
 	public void setSelectedAirline() {
 		selectedAirLine = airlineService.findByName(selectedAirlineName);
+		flights=selectedAirLine.getFlights();
 	}
 	
-	// get list of departure dates
 	
-	public List<String> getDeprtureDate() {
-		
-		return flightService.findAll().stream().map(e->e.getDepartureDate()).collect(Collectors.toList());
-		
-		
+	public void selectFlightsByDestinaction() {
+		Airport airport=airportService.findByCode(selectedAirportCode);
+		flights=flightService.findByDestination(airport);
 	}
+	
 	
 	
 
