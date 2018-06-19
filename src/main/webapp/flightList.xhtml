@@ -14,12 +14,12 @@
 	<link rel="stylesheet"
 		href="https://use.fontaweacsome.com/releases/v5.0.13/css/all.css" />
 	<!--  ui:debug /-->
-	<title>Airlines</title>
+	<title>Flights</title>
 </h:head>
 <h:body>
 	<div class="container">
 	<nav class="navbar navbar-light bg-light justify-content-between">
-		<a class="navbar-brand">Airlines</a>
+		<a class="navbar-brand">Flights</a>
 		<form class="form-inline">
 			<input class="form-control mr-sm-2" type="search"
 				placeholder="Search" aria-label="Search" />
@@ -29,17 +29,49 @@
 
 
 		<f:view>
-			<h:dataTable value="#{backingBean.getAirlines()}" var="air"
-				styleClass="table" headerClass="accountTableHeader"
+			<h:dataTable value="#{backingBean.selectedAirLine.flights}"
+				var="flight" styleClass="table" headerClass="accountTableHeader"
 				rowClasses="accountTableOddRow,accountTableEvenRow">
 				<h:column>
 					<f:facet name="header">id</f:facet>    				
-      #{air.id}
+      #{flight.id}
    </h:column>
 
 				<h:column>
-					<f:facet name="header">Name</f:facet>    				
-      #{air.name}
+					<f:facet name="header">Flight Number</f:facet>    				
+      #{flight.flightnr}
+   </h:column>
+   		<h:column>
+					<f:facet name="header">Departure Date</f:facet>    				
+      #{flight.departureDate}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Departure Time</f:facet>    				
+      #{flight.departureTime}
+   </h:column>
+   		<h:column>
+					<f:facet name="header">Arrival Date</f:facet>    				
+      #{flight.arrivalDate}
+   </h:column>
+
+				<h:column>
+					<f:facet name="header">Arrival Time</f:facet>    				
+      #{flight.arrivalTime}
+   </h:column>
+   
+   	<h:column>
+					<f:facet name="header">Origin</f:facet>    				
+      #{flight.origin.name}
+   </h:column>
+   
+   	<h:column>
+					<f:facet name="header">Destination</f:facet>    				
+      #{flight.destination.name}
+   </h:column>
+   <h:column>
+					<f:facet name="header">AirPlane</f:facet>    				
+      #{flight.airplane.serialnr}
    </h:column>
 
 
@@ -48,16 +80,7 @@
 				<h:column>
 					<f:facet name="header">Action</f:facet>
 					<h:column>
-						<h:form>
-
-							<h:commandLink value="Update"
-								action="#{backingBean.editAirLine(air.id)}"></h:commandLink>
-							<h:commandLink value="Delete"
-								action="#{backingBean.deleteAirline(air.id)}"></h:commandLink>
-							<h:commandLink value="Details"  action="#{backingBean.airlineDetails(air.name)}"></h:commandLink>
-
-						</h:form>
-
+						
 					</h:column>
 
 				</h:column>
@@ -65,15 +88,8 @@
 			</h:dataTable>
 		</f:view>
 
-<h:form>
-
  
-Name<h:inputText value="#{backingBean.airline.name}" />
-		<br></br>
-		<h:commandButton value="Create" outcome="#"
-			action="#{backingBean.createAirline()}"></h:commandButton>
 
-	</h:form>
 	</div>
 
 	

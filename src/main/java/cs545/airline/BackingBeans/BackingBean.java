@@ -24,9 +24,18 @@ public class BackingBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	AirlineService airlineService;
-	Airline airline = new Airline();
-	List<Airline> airlines = new ArrayList<>();
+	private AirlineService airlineService;
+	private Airline airline = new Airline();
+	private List<Airline> airlines = new ArrayList<>();
+	private Airline selectedAirLine = null;
+
+	public Airline getSelectedAirLine() {
+		return selectedAirLine;
+	}
+
+	public void setSelectedAirLine(Airline selectedAirLine) {
+		this.selectedAirLine = selectedAirLine;
+	}
 
 	public String createAirline() {
 
@@ -68,6 +77,11 @@ public class BackingBean implements Serializable {
 		airlineService.delete(id);
 		return "ListAirLines.xhtml?faces-redirect=true";
 		
+	}
+	
+	public String airlineDetails(String name) {
+		selectedAirLine = airlineService.findByName(name);
+		return "flightList.xhtml?faces-redirect=true";
 	}
 
 }
