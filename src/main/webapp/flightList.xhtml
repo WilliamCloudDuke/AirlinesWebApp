@@ -29,7 +29,18 @@
 
 
 		<f:view>
-			<h:dataTable value="#{backingBean.selectedAirLine.flights}"
+		
+		<h:form>
+		<h:outputLabel for="flightMenu" value ="AirLine Name"></h:outputLabel>
+		<h:selectOneMenu id ="flightMenu" value="#{backingBean.selectedAirlineName}"  lazy="true">
+			<f:ajax listener="#{backingBean.setSelectedAirline()}" render="flightTable"/>
+			<f:selectItem itemLabel="Select One" itemValue="airlineName"/>
+			<f:selectItems value="#{backingBean.getAirlineNames()}" ></f:selectItems>
+		</h:selectOneMenu>
+		
+		</h:form>
+		
+			<h:dataTable id="flightTable" value="#{backingBean.selectedAirLine.flights}"
 				var="flight" styleClass="table" headerClass="accountTableHeader"
 				rowClasses="accountTableOddRow,accountTableEvenRow">
 				<h:column>

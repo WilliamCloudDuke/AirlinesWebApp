@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -28,6 +29,15 @@ public class BackingBean implements Serializable {
 	private Airline airline = new Airline();
 	private List<Airline> airlines = new ArrayList<>();
 	private Airline selectedAirLine = null;
+	private String selectedAirlineName;
+
+	public String getSelectedAirlineName() {
+		return selectedAirlineName;
+	}
+
+	public void setSelectedAirlineName(String selectedAirlineName) {
+		this.selectedAirlineName = selectedAirlineName;
+	}
 
 	public Airline getSelectedAirLine() {
 		return selectedAirLine;
@@ -58,6 +68,10 @@ public class BackingBean implements Serializable {
 		return airlines;
 	}
 	
+	public List<String> getAirlineNames() {
+		return airlineService.findAll().stream().map(a -> a.getName()).collect(Collectors.toList());
+	}
+	
 	public String editAirLine(long id) {
 		Airline air = airlineService.findById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -82,6 +96,11 @@ public class BackingBean implements Serializable {
 	public String airlineDetails(String name) {
 		selectedAirLine = airlineService.findByName(name);
 		return "flightList.xhtml?faces-redirect=true";
+	}
+	
+	// Ajax
+	public void setSelectedAirline() {
+		selectedAirLine = airlineService.findByName(selectedAirlineName);
 	}
 
 }
