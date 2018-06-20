@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="/bootstrap-4/css/bootstrap.min.css" />
+    <h:outputStylesheet library="css" name="main.css" />
+    <h:outputScript library="css" name="/bootstrap-4/js/bootstrap.min.js"/>
+</h:head>
+<f:view>
+    <h:form id="createAirplaneForm" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h2>Create AirPlane Record</h2>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <h:outputLabel for="airportcode" class="control-label col-sm-4">Airport code:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="airportcode" value="#{airportBean.airport.airportcode}" class="form-control" validatorMessage="Airport code is required">
+                    <f:validateRequired />
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="planeID" class="control-label col-sm-4">AirPlaneID:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="planeID" value="#{airplaneBean.airplane.id}" class="form-control" validatorMessage="Name is required">
+                    <f:validateRequired/>
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="sn" class="control-label col-sm-4">SerialNo.:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="sn" value="#{airplaneBean.airplane.serialnr}" class="form-control">
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="model" class="control-label col-sm-4">Model:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="model" value="#{airplaneBean.airplane.model}" class="form-control">
+                </h:inputText>
+            </div>
+        </div>
+        
+         <div class="form-group">
+            <h:outputLabel for="capcity" class="control-label col-sm-4">Capacity:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="capcity" value="#{airplaneBean.airplane.capacity}" class="form-control">
+                </h:inputText>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="col-sm-2">
+                    <h:commandButton value="Save" action="#{airplaneBean.createAirplane()}" class="btn btn-success btnWidth" />
+                </div>
+            </div>
+        </div>
+    </h:form>
+</f:view>
+</html>

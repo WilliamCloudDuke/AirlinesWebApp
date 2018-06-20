@@ -20,6 +20,7 @@ public class AirplaneDao {
 	private EntityManager entityManager = JpaUtil.getEntityManager();
 	
 	public void create(Airplane airplane) {
+		if(!entityManager.getTransaction().isActive())
 		entityManager.getTransaction().begin();
 		entityManager.persist(airplane);
 		entityManager.getTransaction().commit();

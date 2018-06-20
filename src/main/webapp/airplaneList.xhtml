@@ -14,49 +14,47 @@
 <f:view>
 	<center>
 		<h2>
-			<h:outputText value="Airports" />
+			<h:outputText value="AirPlanes" />
 		</h2>
 	</center>
-	<h:form id="airportForm">
-		<h:dataTable id="airportTable" binding="#{table}"
-			value="#{airportBean.getAirports()}" var="airport"
+	<h:form id="airplaneForm">
+		<h:dataTable id="airplaneTable" binding="#{table}"
+			value="#{airplaneBean.getAirplanes()}" var="plane"
 			class="table table-striped table-hover table-bordered tableUpdated">
 			<h:column>
-				<f:facet name="header">Id</f:facet>
+				<f:facet name="header">PlaneID</f:facet>
 				<h:outputText value="#{table.rowIndex + 1}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Airport code</f:facet>
-				<h:outputText value="#{airport.airportcode}" />
+				<f:facet name="header">Serial No.</f:facet>
+				<h:outputText value="#{plane.serialnr}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Name</f:facet>
+				<f:facet name="header">Model:</f:facet>
+				<h:outputText value="#{plane.model}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">City</f:facet>
-				<h:outputText value="#{airport.city}" />
+				<f:facet name="header">Capacity</f:facet>
+				<h:outputText value="#{plane.capacity}" />
 			</h:column>
-			<h:column>
-				<f:facet name="header">Country</f:facet>
-				<h:outputText value="#{airport.country}" />
-			</h:column>
+		
 			<h:column>
 				<f:facet name="header"></f:facet>
 				<h:commandButton
-					action="#{airportBean.editAiportRecord(airport.id)}" value="Update"
+					action="#{airplaneBean.editAirplaneRecord(plane.id)}" value="Update"
 					class="btn btn-primary" />
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header"></f:facet>
 				<h:commandButton
-					action="#{airportBean.deleteAirport(airport)}" value="Delete"
+					action="#{airplaneBean.deleteAirplane(plane)}" value="Delete"
 					class="btn btn-primary" />
 			</h:column>
 			
 		</h:dataTable>
 		<center>
-			<h:commandButton action="createAirport.xhtml?faces-redirect=true"
+			<h:commandButton action="createairplane.xhtml?faces-redirect=true"
 				value="Create New Airport" class="btn btn-success btnSpace" />
 		</center>
 	</h:form>

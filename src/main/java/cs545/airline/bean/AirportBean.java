@@ -49,4 +49,10 @@ public class AirportBean {
 		airportService.update(airport);
 		return "airportList.xhtml";
 	}
+	
+	public String deleteAirport(Airport a) {
+		airportService.delete(a);
+		return "airportList.xhtml";
+	}
+		
 }

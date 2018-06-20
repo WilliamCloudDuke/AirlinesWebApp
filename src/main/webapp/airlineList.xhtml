@@ -14,50 +14,40 @@
 <f:view>
 	<center>
 		<h2>
-			<h:outputText value="Airports" />
+			<h:outputText value="AirLines" />
 		</h2>
 	</center>
-	<h:form id="airportForm">
-		<h:dataTable id="airportTable" binding="#{table}"
-			value="#{airportBean.getAirports()}" var="airport"
+	<h:form id="airlineForm">
+		<h:dataTable id="airlineTable" binding="#{table}"
+			value="#{airlineBackbean.getAirlines()}" var="airline"
 			class="table table-striped table-hover table-bordered tableUpdated">
 			<h:column>
-				<f:facet name="header">Id</f:facet>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{table.rowIndex + 1}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Airport code</f:facet>
-				<h:outputText value="#{airport.airportcode}" />
-			</h:column>
-			<h:column>
 				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{airline.name}" />
 			</h:column>
-			<h:column>
-				<f:facet name="header">City</f:facet>
-				<h:outputText value="#{airport.city}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Country</f:facet>
-				<h:outputText value="#{airport.country}" />
-			</h:column>
+			
 			<h:column>
 				<f:facet name="header"></f:facet>
 				<h:commandButton
-					action="#{airportBean.editAiportRecord(airport.id)}" value="Update"
+					action="#{airlineBackbean.editAirlineRecord(airline.id)}" value="Update"
 					class="btn btn-primary" />
 			</h:column>
 			
 			<h:column>
 				<f:facet name="header"></f:facet>
 				<h:commandButton
-					action="#{airportBean.deleteAirport(airport)}" value="Delete"
+					action="viewAirlineFlights.xhtml" value="View Flights"
 					class="btn btn-primary" />
 			</h:column>
 			
 		</h:dataTable>
 		<center>
-			<h:commandButton action="createAirport.xhtml?faces-redirect=true"
-				value="Create New Airport" class="btn btn-success btnSpace" />
+			<h:commandButton action="creatAirline.xhtml?faces-redirect=true"
+				value="Create New Airline" class="btn btn-success btnSpace" />
 		</center>
 	</h:form>
 </f:view>
