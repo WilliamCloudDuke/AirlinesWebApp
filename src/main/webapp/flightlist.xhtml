@@ -21,55 +21,16 @@
 	<h:form id="filterForm">
 	<h:outputText value="Filter By:" />
 	
-	<h:selectOneMenu value = "#{flightBean.searchType}"> 
-	   <f:selectItems value="#{flightBean.getDropDownListOptions()}" />
-    </h:selectOneMenu> 
+	<h:selectOneMenu id="byAirline" value="#{flightBean.selectedName}"
+							styleClass="form-control">
+		<f:ajax listener="#{flightBean.getSelectedFlights()}"
+								render="flightList" />
+		<f:selectItem itemLabel="By Airline (Default all)"
+								itemValue="all"></f:selectItem>
+		<f:selectItems value="#{flightBean.airlines}"></f:selectItems>
+	</h:selectOneMenu>
+	
     <br />
-    
-    <div>
-        <ui:fragment rendered="#{flightBean.checkType('All')}">
-		       <label >Airline Name: </label>		      
-		       <h:selectOneMenu value="#{flightBean.airlineName}" styleClass="form-control">
-		            <f:selectItems value="#{flightBean.getflights()}" var="c" itemLabel="#{c.getName()}" itemValue="#{c.getName()}" />
-		       </h:selectOneMenu>
-	     </ui:fragment>
-
-	    <ui:fragment rendered="#{flightBean.checkType('DepartureDate')}">
-		       <label >DepartureDate: </label>
-		       
-		       <h:selectOneMenu value="#{flightBean.airlineName}" styleClass="form-control">
-		            <f:selectItems value="#{flightBean.getAirlines()}" var="c" itemLabel="#{c.getName()}" itemValue="#{c.getName()}" />
-		       </h:selectOneMenu>
-	     </ui:fragment>
-	     
-	     	    <ui:fragment rendered="#{flightBean.checkType('AirLine')}">
-		       <label >Origin: </label>
-		       
-		       <h:selectOneMenu value="#{flightBean.airlineName}" styleClass="form-control">
-		            <f:selectItems value="#{flightBean.getAirlines()}" var="c" itemLabel="#{c.getName()}" itemValue="#{c.getName()}" />
-		       </h:selectOneMenu>
-	     </ui:fragment>
-	     
-	     
-	     
-	     	    <ui:fragment rendered="#{flightBean.checkType('Origin')}">
-		       <label >Destination: </label>
-		       
-		       <h:selectOneMenu value="#{flightBean.airlineName}" styleClass="form-control">
-		            <f:selectItems value="#{flightBean.getAirlines()}" var="c" itemLabel="#{c.getName()}" itemValue="#{c.getName()}" />
-		       </h:selectOneMenu>
-	     </ui:fragment>
-	     
-	     
-	     	    <ui:fragment rendered="#{flightBean.checkType('Destination')}">
-		       <label >All: </label>
-		       
-		       <h:selectOneMenu value="#{flightBean.airlineName}" styleClass="form-control">
-		            <f:selectItems value="#{flightBean.getAirlines()}" var="c" itemLabel="#{c.getName()}" itemValue="#{c.getName()}" />
-		       </h:selectOneMenu>
-	     </ui:fragment>
-	     
-	     
 	     
     </div>
     

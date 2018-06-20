@@ -1,7 +1,6 @@
 package cs545.airline.bean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import cs545.airline.model.Airline;
-import cs545.airline.model.Airport;
 import cs545.airline.model.Flight;
+import cs545.airline.service.AirlineService;
 import cs545.airline.service.FlightService;
 
 @Named
@@ -21,13 +20,12 @@ import cs545.airline.service.FlightService;
 public class FlightBean {
 @Inject
 private FlightService flightservice;
+@Inject
+private AirlineService airlineService;
+
 private Flight flight = new Flight();
-private List<Flight> flights ;
-private String searchType = "All";
-private Date ddate;
-private Airline line;
-private Airport dport;
-private Airport oport;
+private String selectedName;
+private List<Flight> flights = new ArrayList<>();
 public FlightBean() {}
 
 @PostConstruct
@@ -60,68 +58,21 @@ public String updateFlight(Flight f) {
 	return "flightList.xhtml";
 }
 
-
-/*filters by date-time, airline, departure, and destination*/
-public void filterbyDate(Date filterDate) {
-	flights = flightservice.findByDeparture(filterDate);	
+public void getSelectedFlights() {
+	Airline airline = airlineService.findByName(selectedName);
+	flights = airline.getFlights();
 }
 
-public void filterbyairline(Airline line) {
-	flights = flightservice.findByAirline(line);
+public void setSelectedName(String selected) {
+	this.selectedName = selected;
 }
 
-public void filterbydestinationPort(Airport port){
-	flights = flightservice.findByDestination(port);
-}
-
-public void filterbyOriginPort(Airport port) {
-	flights = flightservice.findByOrigin(port);
+public String getSelectedName() {
+	return this.selectedName;
 }
 
 
-public List<String> getDropDownListOptions() {
-	List<String> selectOptions = new ArrayList<String>();
-	selectOptions.add("All");
-	selectOptions.add("DepartureDate");
-	selectOptions.add("AirLine");
-	selectOptions.add("Origin");
-	selectOptions.add("Destination");
-	return selectOptions;
-}
-
-public boolean checkType(String toCheck) {
-	boolean checked = false;
-	
-	
-	return checked;
-}
-
-public void findbyselect() {
-	switch(searchType) {
-	 case "DepartureDate":
-		 filterbyDate(ddate);
-		 break;
-		 
-     case "AirLine":
-    	 filterbyairline(line);
-    	 break;
-    	 
-     case "Origin":
-    	 filterbyOriginPort(dport);
-    	 break;
-    	 
-     case "Destination":	
-    	 filterbydestinationPort(oport);
-    	 break;
-    	 
-     default:
-    	 getflights(); 
-	}
-
-}
-
-
-public FlightService getFlightservice() {
+public FlightService getFlightservice(){
 	return flightservice;
 }
 
@@ -137,50 +88,8 @@ public void setFlights(List<Flight> flights) {
 	this.flights = flights;
 }
 
-public String getSearchType() {
-	return searchType;
-}
-
-public void setSearchType(String searchType) {
-	this.searchType = searchType;
-}
-
-public Date getDdate() {
-	return ddate;
-}
-
-public void setDdate(Date ddate) {
-	this.ddate = ddate;
-}
-
-public Airline getLine() {
-	return line;
-}
-
-public void setLine(Airline line) {
-	this.line = line;
-}
-
-public Airport getDport() {
-	return dport;
-}
-
-public void setDport(Airport dport) {
-	this.dport = dport;
-}
-
-public Airport getOport() {
-	return oport;
-}
-
-public void setOport(Airport oport) {
-	this.oport = oport;
-}
-
 public void setFlight(Flight flight) {
 	this.flight = flight;
 }
-
-
 
 }

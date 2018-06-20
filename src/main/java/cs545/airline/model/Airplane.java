@@ -13,6 +13,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"serialnr"}))
 public class Airplane {
@@ -24,6 +26,7 @@ public class Airplane {
 	private String serialnr;
 	private String model;
 	private int capacity;
+	@JsonIgnore
 	@OneToMany(mappedBy="airplane", cascade= CascadeType.ALL)
 	@OrderBy("departureDate, departureTime")
 	private List<Flight> flights = new ArrayList<>();
