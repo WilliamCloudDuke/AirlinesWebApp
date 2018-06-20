@@ -7,7 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
@@ -17,6 +18,15 @@
 	<title>Flights</title>
 </h:head>
 <h:body>
+
+
+  <b:navbarLinks>
+  	<b:navLink value="Home" href="welcome.xhtml"></b:navLink>
+    <b:navLink value="AirLineList" href="ListAirLines.xhtml"></b:navLink>
+    <b:navLink value="AirPortList" href="airportList.xhtml"></b:navLink>
+    <b:navLink value="FilightList" href="flightList.xhtml"></b:navLink>
+  </b:navbarLinks>
+
 	<div class="container">
 		<nav class="navbar navbar-light bg-light justify-content-between">
 		<a class="navbar-brand">Flights</a>
@@ -38,7 +48,7 @@
 						<h:outputLabel for="flightMenu" value="AirLine Name"></h:outputLabel>
 						<h:selectOneMenu id="flightMenu"
 							value="#{backingBean.selectedAirlineName}" lazy="true">
-							<!-- change the page -->
+							change the page
 							<f:ajax listener="#{backingBean.setSelectedAirline()}"
 								render="flightTable" />
 							<f:selectItem itemLabel="Select One" itemValue="airlineName" />
@@ -55,10 +65,11 @@
 						<h:outputLabel for="flightDestination" value="Destination code"></h:outputLabel>
 						<h:selectOneMenu id="flightDestination"
 							value="#{backingBean.selectedAirportCode}" lazy="true">
-							<!-- change the page -->
+							change the page
 							<f:ajax listener="#{backingBean.selectFlightsByDestinaction()}"
 								render="flightTable" />
-							<f:selectItem itemLabel="Select One" itemValue="Destination Airport" />
+							<f:selectItem itemLabel="Select One"
+								itemValue="Destination Airport" />
 							<f:selectItems value="#{backingBean.getAirPorts()}"></f:selectItems>
 						</h:selectOneMenu>
 

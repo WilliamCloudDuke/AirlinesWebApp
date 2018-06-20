@@ -7,7 +7,8 @@
 	<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
@@ -17,6 +18,14 @@
 	<title>Airlines</title>
 </h:head>
 <h:body>
+<!-- <b:navBar brand="Home" brandHref="welcome.xhtml" inverse="false"> -->
+  <b:navbarLinks>
+  <b:navLink value="Home" href="welcome.xhtml"></b:navLink>
+    <b:navLink value="AirLineList" href="ListAirLines.xhtml" active="true"></b:navLink>
+    <b:navLink value="AirPortList" href="airportList.xhtml"></b:navLink>
+    <b:navLink value="FilightList" href="flightList.xhtml"></b:navLink>
+  </b:navbarLinks>
+<!-- </b:navBar> -->
 	<div class="container">
 	<nav class="navbar navbar-light bg-light justify-content-between">
 		<a class="navbar-brand">Airlines</a>
@@ -52,7 +61,7 @@
 
 							<h:commandLink value="Update"
 								action="#{backingBean.editAirLine(air.id)}"></h:commandLink>
-							<h:commandLink   value="Delete"
+							<h:commandLink   value="Delete" look="primary"
 								action="#{backingBean.deleteAirline(air.id)}"></h:commandLink>
 							<h:commandLink value="Details"  action="#{backingBean.airlineDetails(air.name)}"></h:commandLink>
 
@@ -70,7 +79,7 @@
  
 Name<h:inputText value="#{backingBean.airline.name}" />
 		<br></br>
-		<h:commandButton value="Create" outcome="#"
+		<h:commandButton  value="Create" outcome="#"
 			action="#{backingBean.createAirline()}"></h:commandButton>
 
 	</h:form>

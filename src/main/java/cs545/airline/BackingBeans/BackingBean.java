@@ -96,7 +96,9 @@ public class BackingBean implements Serializable {
 	
 	// get all airlines names to show up on the select menu
 	public List<String> getAirlineNames() {
+		System.out.println(">>>>>>>>>>> error free?>>>>>>>>>");
 		return airlineService.findAll().stream().map(a -> a.getName()).collect(Collectors.toList());
+		
 	}
 	
 	public List<String> getAirPorts() {
@@ -132,6 +134,9 @@ public class BackingBean implements Serializable {
 	}
 	
 	public List<Flight> getFlights() {
+//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>");
+//		flights=flightService.findAll();
+//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>"+flights.size());
 		return flights;
 	}
 

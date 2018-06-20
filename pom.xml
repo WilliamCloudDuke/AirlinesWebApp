@@ -113,6 +113,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		
+<dependency>
+    <groupId>net.bootsfaces</groupId>
+    <artifactId>bootsfaces</artifactId>
+    <version>1.2.0</version>
+    <scope>compile</scope>
+</dependency>
 	</dependencies>
 
 	<build>
