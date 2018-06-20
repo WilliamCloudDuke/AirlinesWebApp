@@ -31,7 +31,6 @@ public class AirportBean {
 
 	public String createAirport() {
 		airportService.create(airport);
-		// return "airportList.xhtml";
 		return "airportList.xhtml?faces-redirect=true";
 	}
 

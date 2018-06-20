@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<h:outputStylesheet library="css"
 		name="/bootstrap-4/css/bootstrap.min.css" />
@@ -14,6 +15,9 @@
 <f:view>
 	<ui:include src="menu.xhtml" />
 	<h:form id="createAirportForm" class="form-horizontal">
+
+		<p:growl id="msgs" showDetail="true" />
+
 		<div class="form-group">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
@@ -120,7 +124,7 @@
 			<div class="col-sm-4">
 				<div class="col-sm-2">
 					<h:commandButton value="Save"
-						action="#{airportBean.createFlight()}"
+						action="#{flightBean.createFlight()}"
 						class="btn btn-success btnWidth" />
 				</div>
 			</div>

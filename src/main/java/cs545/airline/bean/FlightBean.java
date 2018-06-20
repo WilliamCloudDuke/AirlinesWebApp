@@ -40,9 +40,9 @@ public class FlightBean {
 	private List<Airline> airlineList;
 	private List<Airplane> airplaneList;
 	private List<Airport> airportList;
-	private Map<String, String> airlineMap;
-	private Map<String, String> airportMap;
-	private Map<String, String> airplaneMap;
+//	private Map<String, String> airlineMap;
+//	private Map<String, String> airportMap;
+//	private Map<String, String> airplaneMap;
 	private Flight flight;
 
 	public FlightBean() {
@@ -55,13 +55,14 @@ public class FlightBean {
 		airlineList = airlineService.findAll();
 		airplaneList = airplaneService.findAll();
 		airportList = airportService.findAll();
-		airlineMap = new HashMap<>();
-		airportMap = new HashMap<>();
-		airplaneMap = new HashMap<>();
+//		airlineMap = new HashMap<>();
+//		airportMap = new HashMap<>();
+//		airplaneMap = new HashMap<>();
 		flight = new Flight();
 	}
 
-	public String createFlight(Flight flight) {
+	public String createFlight() {
+		System.out.println("***Creating Flight*** ");
 		flightService.create(flight);
 		return "flightList.xhtml?faces-redirect=true";
 	}
@@ -79,6 +80,14 @@ public class FlightBean {
 		sessionMap.put("editFlight", flight);
 		return "editFlight.xhtml?faces-redirect=true";
 	}
+
+	/*
+	 * public void onDateSelect(SelectEvent event) { FacesContext facesContext =
+	 * FacesContext.getCurrentInstance(); SimpleDateFormat format = new
+	 * SimpleDateFormat("dd/MM/yyyy"); facesContext.addMessage(null, new
+	 * FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected",
+	 * format.format(event.getObject()))); }
+	 */
 
 	public String updateFlight(Flight flight) {
 		System.out.println("Updating flight---: " + flight.getId());
