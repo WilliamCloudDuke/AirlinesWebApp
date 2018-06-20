@@ -1,0 +1,509 @@
+API Documentation - Airline JX-RS
+Airline API
+Method: GET
+EndPoint: {hostname}/rs/airline
+e.g http://localhost:8080/airlinesWebApp/rs/airline
+Sample Data: 
+[
+    {
+        "id": 2,
+        "name": "SkyTeam"
+    },
+    {
+        "id": 10,
+        "name": "oneworld"
+    },
+    {
+        "id": 17,
+        "name": "North Star"
+    }
+]
+Description: This API returns all the list of airlines that are available in
+the database of the application either as JSON or XML media type.
+Response Code: 200 (OK)
+
+Method: GET
+EndPoint: {hostname}/rs/airline/{id}
+Description: This API retrieves an airline by its Id.
+Response Code: 200 (OK)
+
+Method: POST
+EndPoint: {hostname}/rs/airline
+Description: This API is invoked to save an airline into the application.
+The accepted body request message format is JSON
+Response Code: 204 (No content) / 500 (Internal Server error) –
+Duplicate Exception
+
+
+Airplane API
+Method: GET
+EndPoint: {hostname}/rs/airplane
+http://localhost:8080/airlinesWebApp/rs/airplane 
+sampleData:
+[
+    {
+        "capacity": 519,
+        "id": 3,
+        "model": "A380",
+        "serialnr": "12345"
+    },
+    {
+        "capacity": 416,
+        "id": 7,
+        "model": "747",
+        "serialnr": "54321"
+    }
+]
+Description: This API returns all the list of airlines that are available in
+the database of the application either as JSON or XML media type.
+
+Method: GET
+EndPoint: {hostname}/rs/airplane/{id}
+Description: This API retrieves an airplane by its Id either as JSON or
+XML media type.
+Method: POST
+EndPoint: {hostname}/rs/airplane
+Description: This API is invoked to save an airplane into the
+application. The accepted body request message format is JSON.
+Response Code: 204 (No content) / 500 (Internal Server error) –
+Duplicate Exception
+
+
+Airport API
+Method: GET
+EndPoint: {hostname}/rs/ airport
+e.g http://localhost:8080/airlinesWebApp/rs/airport
+sample Data:
+[
+    {
+        "airportcode": "AMS",
+        "city": "Amsterdam",
+        "country": "The Netherlands",
+        "id": 4,
+        "name": "Schiphol"
+    },
+    {
+        "airportcode": "DTW",
+        "city": "Detroid",
+        "country": "USA",
+        "id": 5,
+        "name": "Detroid City"
+    },
+    {
+        "airportcode": "NRT",
+        "city": "Tokyo",
+        "country": "Japan",
+        "id": 8,
+        "name": "Narita International Airport"
+    },
+    {
+        "airportcode": "SYD",
+        "city": "Sydney",
+        "country": "Australia",
+        "id": 12,
+        "name": "Kingsford Smith"
+    },
+    {
+        "airportcode": "LAX",
+        "city": "Los Angeles",
+        "country": "USA",
+        "id": 13,
+        "name": "Los Angeles International"
+    },
+    {
+        "airportcode": "FRA",
+        "city": "Frankfurt",
+        "country": "Germany",
+        "id": 19,
+        "name": "Frankfurt International Airport"
+    },
+    {
+        "airportcode": "ORD",
+        "city": "Chicago",
+        "country": "USA",
+        "id": 20,
+        "name": "Chicago O'hare International"
+    },
+    {
+        "airportcode": "LHR",
+        "city": "London",
+        "country": "UK",
+        "id": 23,
+        "name": "London Heathrow"
+    },
+    {
+        "airportcode": "JFK",
+        "city": "New York",
+        "country": "USA",
+        "id": 27,
+        "name": "John F. Kennedy International"
+    },
+    {
+        "airportcode": "SIN",
+        "city": "Singapore",
+        "country": "Singapore",
+        "id": 29,
+        "name": "Changi Airport"
+    }
+]
+Description: This API returns all the list of airlines that are available in
+the database of the application either as JSON or XML media type.
+Method: GET
+
+EndPoint: {hostname}/rs/airport/{id}
+Description: This API retrieves an airport by its Id.
+
+
+Method: POST
+EndPoint: {hostname}/rs/airport
+Description: This API is invoked to save an airport into the
+application. The accepted body request message format is JSON
+Response Code: 204 (No content) / 500 (Internal Server error) –
+Duplicate Exception
+
+Flight API
+Method: GET
+EndPoint: {hostname}/rs/flight
+e.g http://localhost:8080/airlinesWebApp/rs/flight
+sample Data:
+[
+    {
+        "airline": {
+            "id": 2,
+            "name": "SkyTeam"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 3,
+            "model": "A380",
+            "serialnr": "12345"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "9:00 AM",
+        "departureDate": "8/6/09",
+        "departureTime": "7:10 PM",
+        "destination": {
+            "airportcode": "AMS",
+            "city": "Amsterdam",
+            "country": "The Netherlands",
+            "id": 4,
+            "name": "Schiphol"
+        },
+        "flightnr": "NW 36",
+        "id": 1,
+        "origin": {
+            "airportcode": "DTW",
+            "city": "Detroid",
+            "country": "USA",
+            "id": 5,
+            "name": "Detroid City"
+        }
+    },
+    {
+        "airline": {
+            "id": 2,
+            "name": "SkyTeam"
+        },
+        "airplane": {
+            "capacity": 416,
+            "id": 7,
+            "model": "747",
+            "serialnr": "54321"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "1:45 PM",
+        "departureDate": "8/6/09",
+        "departureTime": "3:05 PM",
+        "destination": {
+            "airportcode": "DTW",
+            "city": "Detroid",
+            "country": "USA",
+            "id": 5,
+            "name": "Detroid City"
+        },
+        "flightnr": "NW 96",
+        "id": 6,
+        "origin": {
+            "airportcode": "NRT",
+            "city": "Tokyo",
+            "country": "Japan",
+            "id": 8,
+            "name": "Narita International Airport"
+        }
+    },
+    {
+        "airline": {
+            "id": 10,
+            "name": "oneworld"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 11,
+            "model": "A380",
+            "serialnr": "23451"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "6:15 AM",
+        "departureDate": "8/5/09",
+        "departureTime": "10:30 PM",
+        "destination": {
+            "airportcode": "SYD",
+            "city": "Sydney",
+            "country": "Australia",
+            "id": 12,
+            "name": "Kingsford Smith"
+        },
+        "flightnr": "QF 12",
+        "id": 9,
+        "origin": {
+            "airportcode": "LAX",
+            "city": "Los Angeles",
+            "country": "USA",
+            "id": 13,
+            "name": "Los Angeles International"
+        }
+    },
+    {
+        "airline": {
+            "id": 10,
+            "name": "oneworld"
+        },
+        "airplane": {
+            "capacity": 416,
+            "id": 15,
+            "model": "747",
+            "serialnr": "43215"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "6:55 AM",
+        "departureDate": "8/6/09",
+        "departureTime": "9:55 PM",
+        "destination": {
+            "airportcode": "NRT",
+            "city": "Tokyo",
+            "country": "Japan",
+            "id": 8,
+            "name": "Narita International Airport"
+        },
+        "flightnr": "QF 21",
+        "id": 14,
+        "origin": {
+            "airportcode": "SYD",
+            "city": "Sydney",
+            "country": "Australia",
+            "id": 12,
+            "name": "Kingsford Smith"
+        }
+    },
+    {
+        "airline": {
+            "id": 17,
+            "name": "North Star"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 18,
+            "model": "A380",
+            "serialnr": "34512"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "5:45 AM",
+        "departureDate": "8/6/09",
+        "departureTime": "2:30 PM",
+        "destination": {
+            "airportcode": "FRA",
+            "city": "Frankfurt",
+            "country": "Germany",
+            "id": 19,
+            "name": "Frankfurt International Airport"
+        },
+        "flightnr": "UA 944",
+        "id": 16,
+        "origin": {
+            "airportcode": "ORD",
+            "city": "Chicago",
+            "country": "USA",
+            "id": 20,
+            "name": "Chicago O'hare International"
+        }
+    },
+    {
+        "airline": {
+            "id": 17,
+            "name": "North Star"
+        },
+        "airplane": {
+            "capacity": 416,
+            "id": 22,
+            "model": "747",
+            "serialnr": "32154"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "7:30 AM",
+        "departureDate": "8/6/09",
+        "departureTime": "12:59 PM",
+        "destination": {
+            "airportcode": "LHR",
+            "city": "London",
+            "country": "UK",
+            "id": 23,
+            "name": "London Heathrow"
+        },
+        "flightnr": "UA 934",
+        "id": 21,
+        "origin": {
+            "airportcode": "LAX",
+            "city": "Los Angeles",
+            "country": "USA",
+            "id": 13,
+            "name": "Los Angeles International"
+        }
+    },
+    {
+        "airline": {
+            "id": 2,
+            "name": "SkyTeam"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 3,
+            "model": "A380",
+            "serialnr": "12345"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "7:40 AM",
+        "departureDate": "6/25/15",
+        "departureTime": "7:15 AM",
+        "destination": {
+            "airportcode": "LHR",
+            "city": "London",
+            "country": "UK",
+            "id": 23,
+            "name": "London Heathrow"
+        },
+        "flightnr": "NW 8445",
+        "id": 24,
+        "origin": {
+            "airportcode": "AMS",
+            "city": "Amsterdam",
+            "country": "The Netherlands",
+            "id": 4,
+            "name": "Schiphol"
+        }
+    },
+    {
+        "airline": {
+            "id": 2,
+            "name": "SkyTeam"
+        },
+        "airplane": {
+            "capacity": 416,
+            "id": 7,
+            "model": "747",
+            "serialnr": "54321"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "12:21 PM",
+        "departureDate": "6/25/15",
+        "departureTime": "12:05 PM",
+        "destination": {
+            "airportcode": "ORD",
+            "city": "Chicago",
+            "country": "USA",
+            "id": 20,
+            "name": "Chicago O'hare International"
+        },
+        "flightnr": "NW 1689",
+        "id": 25,
+        "origin": {
+            "airportcode": "DTW",
+            "city": "Detroid",
+            "country": "USA",
+            "id": 5,
+            "name": "Detroid City"
+        }
+    },
+    {
+        "airline": {
+            "id": 10,
+            "name": "oneworld"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 11,
+            "model": "A380",
+            "serialnr": "23451"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "11:39 PM",
+        "departureDate": "6/25/15",
+        "departureTime": "3:00 PM",
+        "destination": {
+            "airportcode": "JFK",
+            "city": "New York",
+            "country": "USA",
+            "id": 27,
+            "name": "John F. Kennedy International"
+        },
+        "flightnr": "QF 3101",
+        "id": 26,
+        "origin": {
+            "airportcode": "LAX",
+            "city": "Los Angeles",
+            "country": "USA",
+            "id": 13,
+            "name": "Los Angeles International"
+        }
+    },
+    {
+        "airline": {
+            "id": 10,
+            "name": "oneworld"
+        },
+        "airplane": {
+            "capacity": 416,
+            "id": 15,
+            "model": "747",
+            "serialnr": "43215"
+        },
+        "arrivalDate": "6/25/15",
+        "arrivalTime": "5:15 PM",
+        "departureDate": "6/25/15",
+        "departureTime": "11:05 AM",
+        "destination": {
+            "airportcode": "SIN",
+            "city": "Singapore",
+            "country": "Singapore",
+            "id": 29,
+            "name": "Changi Airport"
+        },
+        "flightnr": "QF 4022",
+        "id": 28,
+        "origin": {
+            "airportcode": "NRT",
+            "city": "Tokyo",
+            "country": "Japan",
+            "id": 8,
+            "name": "Narita International Airport"
+        }
+    },
+    {
+        "airline": {
+            "id": 17,
+            "name": "North Star"
+        },
+        "airplane": {
+            "capacity": 519,
+            "id": 18,
+            "model": "A380",
+            "serialnr": "34512"
+        }
+]
+Description: This API returns all the list of flights that are available in
+the database of the application either as JSON or XML media type.
+Response Code: 200 (OK)
+
+Method: GET
+EndPoint: {hostname}/rs/flight/{id}
+Description: This API retrieves an airline by its Id.
+Response Code: 200 (OK)
