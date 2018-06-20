@@ -23,14 +23,14 @@
 	<h:form id="flightForm">
 		<center>
 			<h:commandButton action="createFlight.xhtml?faces-redirect=true"
-				value="Create new Flight"></h:commandButton>
+				value="Create Flight"></h:commandButton>
 		</center>
 		<p:dataTable id="flights" binding="#{table}"
 			value="#{flightBean.getFlightList()}" var="flight"
 			widgetVar="flightsTable" emptyMessage="No records found"
 			filteredValue="#{flightBean.flightsFiltered}">
 			<p:column headerText="Flight Number">
-				<h:outputText value="#{flight.flightnr}"/>
+				<h:outputText value="#{flight.flightnr}" />
 			</p:column>
 			<p:column headerText="Airline" filterBy="#{flight.airline.name}"
 				filterMatchMode="contains">
@@ -61,7 +61,7 @@
 				<h:outputText
 					value="#{flight.origin.name}(#{flight.origin.airportcode})" />
 			</p:column>
-			<p:column headerText="Destination" 
+			<p:column headerText="Destination"
 				filterBy="#{flight.destination.name}" filterMatchMode="contains">
 				<h:outputText
 					value="#{flight.destination.name}(#{flight.destination.airportcode})" />

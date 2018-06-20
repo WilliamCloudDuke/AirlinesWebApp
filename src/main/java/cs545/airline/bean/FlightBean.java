@@ -1,5 +1,6 @@
 package cs545.airline.bean;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,10 @@ public class FlightBean {
 	private List<Airline> airlineList;
 	private List<Airplane> airplaneList;
 	private List<Airport> airportList;
+	private Map<String, String> airlineMap;
+	private Map<String, String> airportMap;
+	private Map<String, String> airplaneMap;
+	private Flight flight;
 
 	public FlightBean() {
 		super();
@@ -50,6 +55,10 @@ public class FlightBean {
 		airlineList = airlineService.findAll();
 		airplaneList = airplaneService.findAll();
 		airportList = airportService.findAll();
+		airlineMap = new HashMap<>();
+		airportMap = new HashMap<>();
+		airplaneMap = new HashMap<>();
+		flight = new Flight();
 	}
 
 	public String createFlight(Flight flight) {
@@ -63,13 +72,16 @@ public class FlightBean {
 
 	public String editFlight(long id) {
 		Flight flight = flightService.findById(id);
+		System.out.println("flight.getAirline().getName(): " + flight.getAirline().getName());
+		System.out.println("flight.getOrigin().getAirportcode(): " + flight.getOrigin().getAirportcode());
+		System.out.println("flight.getDestination().getAirportcode(): " + flight.getDestination().getAirportcode());
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("editFlight", flight);
 		return "editFlight.xhtml?faces-redirect=true";
 	}
 
 	public String updateFlight(Flight flight) {
-		System.out.println("Updating flight: " + flight.getId());
+		System.out.println("Updating flight---: " + flight.getId());
 		flightService.update(flight);
 		return "flightList.xhtml?faces-redirect=true";
 	}
@@ -108,6 +120,32 @@ public class FlightBean {
 
 	public void setAirportList(List<Airport> airportList) {
 		this.airportList = airportList;
+	}
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+
+	public Map<String, String> getAirlineMap() {
+		Map<String, String> airlineMap = new HashMap<>();
+		this.airlineList.stream().forEach(a -> airlineMap.put(a.getName(), a.getName()));
+		return airlineMap;
+	}
+
+	public Map<String, String> getAirportMap() {
+		Map<String, String> airportMap = new HashMap<>();
+		this.airportList.stream().forEach(a -> airportMap.put(a.getName(), a.getAirportcode()));
+		return airportMap;
+	}
+
+	public Map<String, String> getAirplaneMap() {
+		Map<String, String> airplaneMap = new HashMap<>();
+		this.airplaneList.stream().forEach(a -> airplaneMap.put(a.getSerialnr(), a.getSerialnr()));
+		return airplaneMap;
 	}
 
 }

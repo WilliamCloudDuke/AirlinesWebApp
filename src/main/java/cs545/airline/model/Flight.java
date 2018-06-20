@@ -35,17 +35,14 @@ public class Flight {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Airplane airplane;
 
-	private static DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT,
-			Locale.US);
-	private static DateFormat tf = DateFormat.getTimeInstance(DateFormat.SHORT,
-			Locale.US);
+	private static DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
+	private static DateFormat tf = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.US);
 
 	/* Constructors */
 	public Flight() {
 	}
 
-	public Flight(String flightnr, String departureDate, String departureTime,
-			String arrivalDate, String arrivalTime) {
+	public Flight(String flightnr, String departureDate, String departureTime, String arrivalDate, String arrivalTime) {
 		this.flightnr = flightnr;
 		setDepartureDate(departureDate);
 		setDepartureTime(departureTime);
@@ -53,9 +50,8 @@ public class Flight {
 		setArrivalTime(arrivalTime);
 	}
 
-	public Flight(String flightnr, String departureDate, String departureTime,
-			String arrivalDate, String arrivalTime, Airline airline,
-			Airport origin, Airport destination, Airplane airplane) {
+	public Flight(String flightnr, String departureDate, String departureTime, String arrivalDate, String arrivalTime,
+			Airline airline, Airport origin, Airport destination, Airplane airplane) {
 		this.flightnr = flightnr;
 		setDepartureDate(departureDate);
 		setDepartureTime(departureTime);
@@ -85,48 +81,81 @@ public class Flight {
 	}
 
 	public String getDepartureDate() {
-		return df.format(departureDate);
+		if (null != departureDate) {
+			System.out.println("departureDate: " + departureDate);
+			return df.format(departureDate);
+		} else {
+			return "";
+		}
 	}
 
 	public void setDepartureDate(String departureDate) {
 		try {
-			this.departureDate = df.parse(departureDate);
+			if (null != departureDate) {
+				System.out.println("departureDate: " + departureDate);
+				this.departureDate = df.parse(departureDate);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public String getDepartureTime() {
-		return tf.format(departureTime);
+		if (null != departureTime) {
+			System.out.println("departureTime: " + departureTime);
+			return tf.format(departureTime);
+		} else {
+			return "";
+		}
+
 	}
 
 	public void setDepartureTime(String departureTime) {
 		try {
-			this.departureTime = tf.parse(departureTime);
+			if (null != departureTime) {
+				System.out.println("departureTime: " + departureTime);
+				this.departureTime = tf.parse(departureTime);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public String getArrivalDate() {
-		return df.format(arrivalDate);
+		if (null != arrivalDate) {
+			System.out.println("arrivalDate: " + arrivalDate);
+			return df.format(arrivalDate);
+		} else {
+			return "";
+		}
+
 	}
 
 	public void setArrivalDate(String arrivalDate) {
 		try {
-			this.arrivalDate = df.parse(arrivalDate);
+			if (null != arrivalDate) {
+				System.out.println("arrivalDate: " + arrivalDate);
+				this.arrivalDate = df.parse(arrivalDate);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public String getArrivalTime() {
-		return tf.format(arrivalTime);
+		if (null != arrivalTime) {
+			System.out.println("arrivalTime: " + arrivalTime);
+			return tf.format(arrivalTime);
+		} else {
+			return "";
+		}
 	}
 
 	public void setArrivalTime(String arrivalTime) {
 		try {
-			this.arrivalTime = tf.parse(arrivalTime);
+			if (null != arrivalTime) {
+				this.arrivalTime = tf.parse(arrivalTime);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
