@@ -24,7 +24,7 @@
 	<h:selectOneMenu id="byAirline" value="#{flightBean.selectedName}"
 							styleClass="form-control">
 		<f:ajax listener="#{flightBean.getSelectedFlights()}"
-								render="flightList" />
+								render="flightinfoform" />
 		<f:selectItem itemLabel="By Airline (Default all)"
 								itemValue="all"></f:selectItem>
 		<f:selectItems value="#{flightBean.airlines}"></f:selectItems>
@@ -33,7 +33,7 @@
     <br />
     
 	<br />
-	<h:commandButton value = "Filter" onclick = "alert('Hello World!');" /> 
+	<h:commandButton value = "Filter" onclick = "alert('redirect to same page');" /> 
 	</h:form>
 	
 	

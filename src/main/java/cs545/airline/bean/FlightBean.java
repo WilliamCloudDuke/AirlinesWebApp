@@ -26,7 +26,9 @@ private AirlineService airlineService;
 private Flight flight = new Flight();
 private String selectedName;
 private List<Flight> flights = new ArrayList<>();
+private List<Airline> airlines = new ArrayList<>();
 public FlightBean() {}
+
 
 @PostConstruct
 public void init() {
@@ -90,6 +92,27 @@ public void setFlights(List<Flight> flights) {
 
 public void setFlight(Flight flight) {
 	this.flight = flight;
+}
+
+
+public AirlineService getAirlineService() {
+	return airlineService;
+}
+
+
+public void setAirlineService(AirlineService airlineService) {
+	this.airlineService = airlineService;
+}
+
+
+public List<Airline> getAirlines() {
+	airlines = airlineService.findAll();
+	return airlines;
+}
+
+
+public void setAirlines(List<Airline> airlines) {
+	this.airlines = airlines;
 }
 
 }
