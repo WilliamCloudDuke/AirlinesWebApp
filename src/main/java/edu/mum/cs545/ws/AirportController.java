@@ -53,4 +53,3 @@ public class AirportController {
         return Response.status(204).build();
     }
 }
-© 2018 GitHub, Inc.
