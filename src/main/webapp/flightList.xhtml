@@ -17,14 +17,10 @@
 	<ui:include src="menu.xhtml" />
 	<center>
 		<h2>
-			<h:outputText value="Flights" />
+			<h:outputText value="Flights Data" />
 		</h2>
 	</center>
 	<h:form id="flightForm">
-		<center>
-			<h:commandButton action="createFlight.xhtml?faces-redirect=true"
-				value="Create Flight"></h:commandButton>
-		</center>
 		<p:dataTable id="flights" binding="#{table}"
 			value="#{flightBean.getFlightList()}" var="flight"
 			widgetVar="flightsTable" emptyMessage="No records found"
@@ -75,10 +71,15 @@
 				<h:outputText value="#{flight.airplane.capacity}" />
 			</p:column>
 			<p:column headerText="Update">
-				<h:commandButton action="#{flightBean.editFlight(flight.id)}"
-					value="Update" />
+				<h:commandButton action="#{flightBean.editFlight(flight.id)}" 
+					class="btn btn-info" value="Update" />
 			</p:column>
 		</p:dataTable>
+		<center>
+			<h:commandButton action="createFlight.xhtml?faces-redirect=true"
+				value="Create Flight" class="btn btn-warning btnSpace" />
+		</center>
+
 	</h:form>
 </f:view>
 </html>

@@ -17,7 +17,7 @@
 		<div class="form-group">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<h2>Edit Flight</h2>
+				<h2>Flight Information</h2>
 			</div>
 		</div>
 		<hr />
@@ -25,8 +25,7 @@
 			<h:outputLabel for="flightnr" class="control-label col-sm-4">Flight Number</h:outputLabel>
 			<div class="col-sm-4">
 				<h:inputText id="flightnr" value="#{editFlight.flightnr}"
-					class="form-control" validatorMessage="number is required">
-					<f:validateRequired />
+					class="form-control">
 				</h:inputText>
 			</div>
 		</div>
@@ -109,9 +108,9 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="col-sm-2">
-					<h:commandButton value="Savewww3"
+					<h:commandButton value="Save Flight"
 						action="#{flightBean.updateFlight(editFlight)}"
-						class="btn btn-success btnWidth" />
+						class="btn btn-warning btnWidth" />
 				</div>
 			</div>
 		</div>

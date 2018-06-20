@@ -15,7 +15,7 @@
     <ui:include src="menu.xhtml"/>
 	<center>
 		<h2>
-			<h:outputText value="Airports" />
+			<h:outputText value="Airports Data" />
 		</h2>
 	</center>
 	<h:form id="airportForm">
@@ -45,12 +45,12 @@
 				<f:facet name="header">Update</f:facet>
 				<h:commandButton
 					action="#{airportBean.retrieveAiport(airport.id)}" value="Update"
-					class="btn btn-primary" />
+					class="btn btn-info" />
 			</h:column>
 		</h:dataTable>
 		<center>
 			<h:commandButton action="createAirport.xhtml?faces-redirect=true"
-				value="Create New Airport" class="btn btn-success btnSpace" />
+				value="Create New Airport" class="btn btn-warning btnSpace" />
 		</center>
 	</h:form>
 </f:view>

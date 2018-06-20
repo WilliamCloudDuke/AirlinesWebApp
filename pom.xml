@@ -100,7 +100,7 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.9.4</version>
 		</dependency>
-		<!-- Swagger api to process REST services -->
+		<!-- Swagger api for processing and documenting RESTful web services -->
 		<dependency>
 			<groupId>com.wordnik</groupId>
 			<artifactId>swagger-core</artifactId>
@@ -125,12 +125,12 @@
 					<apiSources>
 						<apiSource>
 							<springmvc>false</springmvc>
-							<locations>cs545.airline.rs</locations>
+							<locations>cs545.airline.rest</locations>
 							<schemes>http</schemes>
 							<host>localhost:8080</host>
 							<basePath>/rest</basePath>
 							<info>
-								<title>Airlines Application</title>
+								<title>Copa Airlines Application</title>
 								<version>1.0</version>
 								<description>RESTFul web services for Airline applications</description>
 								<contact>

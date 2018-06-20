@@ -1,9 +1,9 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "RESTFul web services for Airline applications",
+    "description" : "RESTFul web services for COPA Airlines applications",
     "version" : "1.0",
-    "title" : "Airlines Application",
+    "title" : "Copa Airlines Application",
     "contact" : {
       "name" : "WilliamSrJava",
       "email" : "williamrcsalazar@mum.edu"
@@ -11,5 +11,286 @@
   },
   "host" : "localhost:8080",
   "basePath" : "/rest",
-  "schemes" : [ "http" ]
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/airlines" : {
+      "get" : {
+        "operationId" : "getAllAirlines",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Airline"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airlines/{id}" : {
+      "get" : {
+        "operationId" : "getAirline",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Airline"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "deleteAirline",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/airplanes" : {
+      "get" : {
+        "operationId" : "getAllAirplanes",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Airplane"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airplanes/{id}" : {
+      "get" : {
+        "operationId" : "getAirplane",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Airplane"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "deleteAirplane",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/airports/{id}" : {
+      "get" : {
+        "operationId" : "getAirport",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Airport"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "deleteAirport",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/flights" : {
+      "get" : {
+        "operationId" : "getAllAirports",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Flight"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flights/{id}" : {
+      "get" : {
+        "operationId" : "getFlight",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Flight"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Airline" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "flights" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Flight"
+          }
+        }
+      }
+    },
+    "Airplane" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "serialnr" : {
+          "type" : "string"
+        },
+        "model" : {
+          "type" : "string"
+        },
+        "capacity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "flights" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Flight"
+          }
+        }
+      }
+    },
+    "Airport" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "airportcode" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "arrivals" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Flight"
+          }
+        },
+        "departures" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Flight"
+          }
+        }
+      }
+    },
+    "Flight" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "flightnr" : {
+          "type" : "string"
+        },
+        "departureDate" : {
+          "type" : "string"
+        },
+        "departureTime" : {
+          "type" : "string"
+        },
+        "arrivalDate" : {
+          "type" : "string"
+        },
+        "arrivalTime" : {
+          "type" : "string"
+        },
+        "airline" : {
+          "$ref" : "#/definitions/Airline"
+        },
+        "origin" : {
+          "$ref" : "#/definitions/Airport"
+        },
+        "destination" : {
+          "$ref" : "#/definitions/Airport"
+        },
+        "airplane" : {
+          "$ref" : "#/definitions/Airplane"
+        }
+      }
+    }
+  }
 }

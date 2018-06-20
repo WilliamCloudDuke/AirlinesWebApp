@@ -27,7 +27,7 @@ public class AirportRestService {
 	@Inject
 	private AirportService airportService;
 
-	@ApiOperation(value = "Get Airport by id", notes = "Get Airport by given id", response = Airport.class)
+	@ApiOperation(value = "Get Airport by id", notes = "Get Airport by id", response = Airport.class)
 	@Path("/{id}")
 	@GET
 	public Airport getAirport(@PathParam("id") long id) {

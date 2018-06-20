@@ -1,0 +1,14 @@
+  body {
+    padding-top: 5px;
+    background-image: url("../images/banner.jpg");
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 5px;
+    }
+}
+
+.container {
+    width: 80% !important;
+}    

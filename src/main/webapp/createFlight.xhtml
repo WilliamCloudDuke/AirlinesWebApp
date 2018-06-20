@@ -14,7 +14,7 @@
 </h:head>
 <f:view>
 	<ui:include src="menu.xhtml" />
-	<h:form id="createAirportForm" class="form-horizontal">
+	<h:form id="createFlightForm" class="form-horizontal">
 
 		<p:growl id="msgs" showDetail="true" />
 
@@ -125,7 +125,7 @@
 				<div class="col-sm-2">
 					<h:commandButton value="Save"
 						action="#{flightBean.createFlight()}"
-						class="btn btn-success btnWidth" />
+						class="btn btn-warning btnWidth" />
 				</div>
 			</div>
 		</div>

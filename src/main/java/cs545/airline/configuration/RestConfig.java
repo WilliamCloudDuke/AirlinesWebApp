@@ -1,16 +1,26 @@
 package cs545.airline.configuration;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
-import org.glassfish.jersey.server.ResourceConfig;
+import cs545.airline.rest.AirlineRestService;
 
-@ApplicationPath("/rs")
-public class RestConfig extends ResourceConfig {
-	
+@ApplicationPath("/rest")
+public class RestConfig extends Application {
+	private Set<Class<?>> classes = new HashSet<Class<?>>();
+
 	public RestConfig() {
-		register(new ClassBinder());
-		packages(true, "edu.mum.cs545.ws, com.fasterxml.jackson.jaxrs.json");
-
+		super();
+		classes.add(AirlineRestService.class);
+		classes.add(JacksonConfig.class);
 	}
-	
+
+	@Override
+	public Set<Class<?>> getClasses() {
+		return classes;
+	}
+
 }
