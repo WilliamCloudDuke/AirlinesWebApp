@@ -19,8 +19,8 @@ import cs545.airline.service.FlightService;
 
 @Api(value = "flights", description = "REST API for Flight service")
 @Path("flights")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+//@Consumes(MediaType.APPLICATION_JSON)
+//@Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 
 public class FlightRestService {
@@ -29,7 +29,7 @@ public class FlightRestService {
 	private FlightService flightService;
 
 	@GET
-	@ApiOperation(value = "Get all Flights", notes = "Get all Flights", responseContainer = "List", response = Flight.class)
+	//@ApiOperation(value = "Get all Flights", notes = "Get all Flights", responseContainer = "List", response = Flight.class)
 	public List<Flight> getAllAirports() {
 		return flightService.findAll();
 	}

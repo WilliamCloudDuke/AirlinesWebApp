@@ -35,12 +35,10 @@ public class BackingBean implements Serializable {
 	private FlightService flightService;
 	private Airline airline = new Airline();
 	private List<Airline> airlines = new ArrayList<>();
-	private List<Flight>flights=new ArrayList<>();
+	private List<Flight> flights = new ArrayList<>();
 	private Airline selectedAirLine = null; // to get list of flights
 	private String selectedAirlineName;
 	private String selectedAirportCode;
-	
-	
 
 	public String getSelectedAirportCode() {
 		return selectedAirportCode;
@@ -49,8 +47,8 @@ public class BackingBean implements Serializable {
 	public void setSelectedAirportCode(String selectedAirportCode) {
 		this.selectedAirportCode = selectedAirportCode;
 	}
-	
-	//public List<Flight>get
+
+	// public List<Flight>get
 
 	public void setAirlineService(AirlineService airlineService) {
 		this.airlineService = airlineService;
@@ -60,7 +58,7 @@ public class BackingBean implements Serializable {
 		return selectedAirlineName;
 	}
 
-	//get it in the combobox
+	// get it in the combobox
 	public void setSelectedAirlineName(String selectedAirlineName) {
 		this.selectedAirlineName = selectedAirlineName;
 	}
@@ -93,18 +91,18 @@ public class BackingBean implements Serializable {
 		airlines = airlineService.findAll();
 		return airlines;
 	}
-	
+
 	// get all airlines names to show up on the select menu
 	public List<String> getAirlineNames() {
 		System.out.println(">>>>>>>>>>> error free?>>>>>>>>>");
 		return airlineService.findAll().stream().map(a -> a.getName()).collect(Collectors.toList());
-		
+
 	}
-	
+
 	public List<String> getAirPorts() {
-		return airportService.findAll().stream().map(a ->a.getAirportcode()).collect(Collectors.toList());
+		return airportService.findAll().stream().map(a -> a.getAirportcode()).collect(Collectors.toList());
 	}
-	
+
 	public String editAirLine(long id) {
 		Airline air = airlineService.findById(id);
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -112,47 +110,43 @@ public class BackingBean implements Serializable {
 		sessionMap.put("editAirline", air);
 		return "editAirline.xhtml?faces-redirect=true";
 	}
-	
+
 	public String updateAirline(Airline airline) {
 		airlineService.update(airline);
-		
-		//airlineService.create(airline);;
+
+		// airlineService.create(airline);;
 		return "ListAirLines.xhtml?faces-redirect=true";
-		
+
 	}
-	
+
 	public String deleteAirline(long id) {
 		airlineService.delete(id);
 		return "ListAirLines.xhtml?faces-redirect=true";
-		
+
 	}
-	
+
 	public String airlineDetails(String name) {
 		selectedAirLine = airlineService.findByName(name);
-		flights=selectedAirLine.getFlights();
+		flights = selectedAirLine.getFlights();
 		return "flightList.xhtml?faces-redirect=true";
 	}
-	
+
 	public List<Flight> getFlights() {
-//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>");
-//		flights=flightService.findAll();
-//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>"+flights.size());
+		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>");
+		// flights=flightService.findAll();
+		// System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>"+flights.size());
 		return flights;
 	}
 
 	// Ajax for select airline name
 	public void setSelectedAirline() {
 		selectedAirLine = airlineService.findByName(selectedAirlineName);
-		flights=selectedAirLine.getFlights();
+		flights = selectedAirLine.getFlights();
 	}
-	
-	
+
 	public void selectFlightsByDestinaction() {
-		Airport airport=airportService.findByCode(selectedAirportCode);
-		flights=flightService.findByDestination(airport);
+		Airport airport = airportService.findByCode(selectedAirportCode);
+		flights = flightService.findByDestination(airport);
 	}
-	
-	
-	
 
 }
